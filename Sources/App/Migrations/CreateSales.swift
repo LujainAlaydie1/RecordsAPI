@@ -11,12 +11,12 @@ import FluentPostgresDriver
 /// Creates a database table called Records
 struct CreateSales: Migration {
     
-    private let salesTabelName: String = "sales"
+    private let salesTableName: String = "sales"
     
     /// Creates the table
     func prepare(on database: Database) -> EventLoopFuture<Void> {
         database
-            .schema(salesTabelName) // table name
+            .schema(salesTableName) // table name
             .id()
             .field("name", .string)
             .field("date_time", .datetime)
@@ -27,6 +27,6 @@ struct CreateSales: Migration {
     
     /// Undos the table creation
     func revert(on database: Database) -> EventLoopFuture<Void> {
-        database.schema(salesTabelName).delete()
+        database.schema(salesTableName).delete()
     }
 }
