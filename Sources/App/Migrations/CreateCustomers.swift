@@ -19,7 +19,7 @@ struct CreateCustomer: Migration {
             .schema(customersTableName) // table name
             .id()
             .field("first_name", .string)
-            .field("last_name", .string)
+            .field("last_name", .string, .required)
             .field("phone_number", .string)
 
             .create()

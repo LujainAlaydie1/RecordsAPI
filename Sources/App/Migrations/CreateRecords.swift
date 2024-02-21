@@ -18,10 +18,10 @@ struct CreateRecords: Migration {
         database
             .schema(recordsTableName) // table name
             .id()
-            .field("name", .string)
+            .field("name", .string, .required)
             .field("artist_name", .string)
-            .field("price", .double)
-            .field("quantity", .int)
+            .field("price", .double, .required)
+            .field("quantity", .int, .required)
             .field("genre_id", .uuid, .references("genres", "id")) // referencing genres.id
             .create()
     }

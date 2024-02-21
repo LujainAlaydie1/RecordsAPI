@@ -16,8 +16,6 @@ final class Customer: Model, Content {
     @Field(key: "phone_number")
     var phone_number: String
     
-    
-
     init() { 
         
     }

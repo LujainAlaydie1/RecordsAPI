@@ -31,7 +31,7 @@ final class Record: Model, Content {
     var genre: Genre
     
     
-    init(id: UUID? = nil, name: String, artist_name: String, price: Double, quantity: Int, genre_id: UUID) {
+    init(id: UUID? = nil, name: String, artist_name: String, price: Double, quantity: Int, genre_id: Genre.IDValue) {
         self.id = id
         self.name = name
         self.artist_name = artist_name

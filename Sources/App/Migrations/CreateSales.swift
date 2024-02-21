@@ -20,7 +20,7 @@ struct CreateSales: Migration {
             .id()
             .field("name", .string)
             .field("date_time", .datetime)
-            .field("customer_id",  .uuid, .references("customers", "id")) // referencing customers.id
+            .field("customer_id",  .uuid, .required,.references("customers", "id")) // referencing customers.id
             .field("discount_applied", .double)
             .create()
     }

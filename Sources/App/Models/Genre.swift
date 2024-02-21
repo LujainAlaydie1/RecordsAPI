@@ -8,7 +8,6 @@
 import Fluent
 import Vapor
 
-
 final class Genre: Model, Content {
         static let schema = "genres"
         

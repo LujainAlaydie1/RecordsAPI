@@ -18,9 +18,9 @@ struct CreateSalesItems: Migration {
         database
             .schema(salesItemsTableName) // table name
             .id()
-            .field("sale_id", .uuid, .references("sales", "id")) // referencing sales.id
-            .field("record_id",.uuid, .references("records", "id")) // referencing records.id
-            .field("quantity",  .int)
+            .field("sale_id", .uuid, .required, .references("sales", "id")) // referencing sales.id
+            .field("record_id",.uuid, .required, .references("records", "id")) // referencing records.id
+            .field("quantity", .int, .required)
             .create()
     }
     

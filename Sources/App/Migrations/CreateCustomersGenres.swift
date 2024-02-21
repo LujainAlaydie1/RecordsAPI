@@ -18,8 +18,8 @@ struct CreateCustomersGenres: Migration {
         database
             .schema(customersGenresTableName) // table name
             .id()
-            .field("customer_id",  .uuid, .references("customers", "id")) // referencing customers.id
-            .field("genres_id",  .uuid, .references("genres", "id")) // referencing customers.id
+            .field("customer_id",  .uuid, .required, .references("customers", "id")) // referencing customers.id
+            .field("genres_id",  .uuid, .required, .references("genres", "id")) // referencing customers.id
 
 
             .create()

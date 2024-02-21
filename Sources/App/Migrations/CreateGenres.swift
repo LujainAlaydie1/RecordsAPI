@@ -18,7 +18,7 @@ struct CreateGenres: Migration {
         database
             .schema(genresTableName) // table name
             .id()
-            .field("name", .string)
+            .field("name", .string, .required)
             .create()
     }
     
