@@ -9,17 +9,17 @@
 import Fluent
 import Vapor
 
-final class Sales_items: Model, Content {
+final class Sale_item: Model, Content {
     static let schema = "Sales_items"
     
     @ID
     var id: UUID?
     
     @Parent(key: "sale_id")
-    var Sale : Sales
+    var sale : Sale
 
     @Parent(key: "record_id")
-    var Record: Record
+    var record: Record
     
     @Field(key: "quantity")
     var quantity: Int
@@ -31,10 +31,10 @@ final class Sales_items: Model, Content {
         
     }
 
-    init(id: UUID? = nil, Sale: Sales, Record: Record, quantity: Int) {
+    init(id: UUID? = nil, sale: Sale.IDValue, Record: Record.IDValue, quantity: Int) {
         self.id = id
-        self .Sale = Sale
-        self.Record = Record
-        self .quantity = quantity
+        self.$sale.id = sale
+        self.$record.id = Record
+        self.quantity = quantity
     }
 }

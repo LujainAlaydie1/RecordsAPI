@@ -9,7 +9,7 @@
 import Fluent
 import Vapor
 
-final class Sales: Model, Content {
+final class Sale: Model, Content {
     static let schema = "sales"
     
     @ID
@@ -21,8 +21,8 @@ final class Sales: Model, Content {
     @Field(key: "date_time")
     var date_time: String
     
-    @Field(key: "customer_id")
-    var customer_id: UUID
+    @Parent(key: "customer_id")
+    var customer_id: Customer
     
     @Field(key: "discount_applied")
     var discount_applied: Double
@@ -33,11 +33,11 @@ final class Sales: Model, Content {
         
     }
 
-    init(id: UUID? = nil, name: String, date_time: String,customer_id: UUID, discount_applied: String) {
+    init(id: UUID? = nil, name: String, date_time: String,customer_id: Customer.IDValue, discount_applied: String) {
         self.id = id
         self.name = name
         self .date_time = date_time
-        self.customer_id = customer_id
+        self.$customer_id.id = customer_id
         self.discount_applied = 0.0
     }
 }
