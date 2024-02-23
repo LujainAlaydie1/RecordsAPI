@@ -20,8 +20,6 @@ struct CreateCustomersGenres: Migration {
             .id()
             .field("customer_id",  .uuid, .required, .references("customers", "id")) // referencing customers.id
             .field("genres_id",  .uuid, .required, .references("genres", "id")) // referencing customers.id
-
-
             .create()
     }
     

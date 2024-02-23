@@ -12,6 +12,7 @@ import FluentPostgresDriver
 struct CreateSales: Migration {
     
     private let salesTableName: String = "sales"
+
     
     /// Creates the table
     func prepare(on database: Database) -> EventLoopFuture<Void> {
@@ -19,7 +20,6 @@ struct CreateSales: Migration {
             .schema(salesTableName) // table name
             .id()
             .field("name", .string)
-            .field("date_time", .datetime)
             .field("customer_id",  .uuid, .required,.references("customers", "id")) // referencing customers.id
             .field("discount_applied", .double)
             .create()

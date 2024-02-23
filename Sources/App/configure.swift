@@ -16,12 +16,12 @@ public func configure(_ app: Application) async throws {
     //CREATE ALL TABLES
     app.migrations.add(CreateCustomer())
     app.migrations.add(CreateGenres())
-    app.migrations.add(CreateRecords())
     app.migrations.add(CreateSales())
+    app.migrations.add(CreateRecords())
     app.migrations.add(CreateSalesItems())
     app.migrations.add(CreateCustomersGenres())
     try await app.autoMigrate()
-
+//    try await app.autoRevert()
     // register routes
     try routes(app)
 }

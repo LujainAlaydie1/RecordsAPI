@@ -12,24 +12,10 @@ func routes(_ app: Application) throws {
 
     try app.register(collection: CustomerController())
     try app.register(collection: RecordsController())
+    try app.register(collection: SaleController())
+    try app.register(collection: SaleItemController())
+    try app.register(collection: GenreController())
+    try app.register(collection: CustomerGenreController())
     
-    // Group routes for records
-    let recordController = RecordsController()
 
-       /// Group routes for records
-    app.group("records") { records in
-        
-        // Fetch records by genre
-        records.get("bygenre") { req -> EventLoopFuture<[Record]> in
-            return try recordController.getByGenre(req: req)
-        }
-        
-        // Fetch a record by its name
-        records.get("byname") { req -> EventLoopFuture<Record> in
-            return try recordController.getByname(req: req)
-        }
-    }
-    
-    
-    
 }

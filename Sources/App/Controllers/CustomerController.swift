@@ -52,6 +52,8 @@ struct CustomerController: RouteCollection {
                 return customer.delete(on: req.db).transform(to: .noContent)
             }
     }
+    
+
 
     // Update customer info
     func update(req: Request) throws -> EventLoopFuture<Customer> {

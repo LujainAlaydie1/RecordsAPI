@@ -19,8 +19,10 @@ struct RecordsController: RouteCollection {
         records.group(":id"){ record in
             record.put(use: update)
         }
+        records.get("byName", ":name", use: getByname)
+        records.get("byGenre", ":genre", use: getByGenre) 
 
-        
+
    }
 
     // Fetch all records
@@ -72,26 +74,30 @@ struct RecordsController: RouteCollection {
             }
     }
     
-    // Fetch a record by its name
-    func getByname(req: Request) throws -> EventLoopFuture<Record> {
-         guard let name = req.query[String.self, at: "name"] else {
-             throw Abort(.badRequest)
-         }
-         return Record.query(on: req.db)
-             .filter(\.$name == name) // Use the correct key path for the 'name' property
-             .first()
-             .unwrap(or: Abort(.notFound))
-     }
+    // Handler to get a genre by its name
+        func getByname(req: Request) throws -> EventLoopFuture<Record> {
+            guard let name = req.parameters.get("name", as: String.self) else {
+                throw Abort(.badRequest)
+            }
+            
+            return Record.query(on: req.db)
+                .filter(\.$name == name)
+                .first()
+                .unwrap(or: Abort(.notFound))
+        }
+    
     
     func getByGenre(req: Request) throws -> EventLoopFuture<[Record]> {
-            guard let genreID = req.query[UUID.self, at: "genre_id"] else {
-                throw Abort(.badRequest, reason: "Genre ID parameter is required")
-            }
-
-            return Record.query(on: req.db)
-                .filter(\.$genre.$id == genreID)
-                .all()
+        guard let genreID = req.parameters.get("genre", as: UUID.self) else {
+            throw Abort(.badRequest)
         }
+
+        // Query the database to find records with the specified genre ID
+        return Record.query(on: req.db)
+            .filter(\.$genre.$id == genreID)
+            .all()
+    }
+
     
     
     

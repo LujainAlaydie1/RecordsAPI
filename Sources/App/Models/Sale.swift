@@ -17,9 +17,6 @@ final class Sale: Model, Content {
     
     @Field(key: "name")
     var name : String
-
-    @Field(key: "date_time")
-    var date_time: String
     
     @Parent(key: "customer_id")
     var customer_id: Customer
@@ -33,10 +30,9 @@ final class Sale: Model, Content {
         
     }
 
-    init(id: UUID? = nil, name: String, date_time: String,customer_id: Customer.IDValue, discount_applied: String) {
+    init(id: UUID? = nil, name: String, customer_id: Customer.IDValue, discount_applied: Double) {
         self.id = id
         self.name = name
-        self .date_time = date_time
         self.$customer_id.id = customer_id
         self.discount_applied = 0.0
     }

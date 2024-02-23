@@ -10,7 +10,7 @@ import Fluent
 import Vapor
 
 final class Sale_item: Model, Content {
-    static let schema = "Sales_items"
+    static let schema = "sales_items"
     
     @ID
     var id: UUID?
@@ -24,9 +24,7 @@ final class Sale_item: Model, Content {
     @Field(key: "quantity")
     var quantity: Int
     
-
-  
-
+    
     init() {
         
     }
