@@ -84,3 +84,7 @@ A RESTful API integrated with PSQL database for a records shop management system
 7- fetch by customer-id (GET)
 
 
+## Database Schema
+
+<img width="845" alt="Screenshot 2024-02-26 at 3 01 00 PM" src="https://github.com/LujainAlaydie1/RecordsAPI/assets/96392905/b4dd2449-2734-4cb0-b847-8c7f8afa28db">
+
