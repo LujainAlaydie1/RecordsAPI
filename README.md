@@ -88,3 +88,8 @@ A RESTful API integrated with PSQL database for a records shop management system
 
 <img width="845" alt="Screenshot 2024-02-26 at 3 01 00 PM" src="https://github.com/LujainAlaydie1/RecordsAPI/assets/96392905/b4dd2449-2734-4cb0-b847-8c7f8afa28db">
 
+
+Created by 
+Lujain Alaydie
+Ahlam AlShehri
+Loujain Andejany
